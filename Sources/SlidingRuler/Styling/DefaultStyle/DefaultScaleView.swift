@@ -64,22 +64,15 @@ struct DefaultScaleView: ScaleView {
     var shape: ScaleShape { .init() }
     let width: CGFloat
     let height: CGFloat
+    let color: Color
 
     var unitMarkWidth: CGFloat { shape.unitMarkSize.width }
     var halfMarkWidth: CGFloat { shape.halfMarkSize.width }
     var fractionMarkWidth: CGFloat { shape.fractionMarkSize.width }
 
-    init(width: CGFloat, height: CGFloat = 30) {
+    init(width: CGFloat, height: CGFloat = 30, color: Color) {
         self.width = width
         self.height = height
-    }
-}
-
-struct ScaleView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            DefaultScaleView(width: 120)
-        }
-        .previewLayout(.sizeThatFits)
+        self.color = color
     }
 }

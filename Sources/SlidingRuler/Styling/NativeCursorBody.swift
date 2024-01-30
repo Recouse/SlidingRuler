@@ -29,15 +29,23 @@
 import SwiftUI
 
 public struct NativeCursorBody: View {
+    public let width: CGFloat
+    public let height: CGFloat?
+    public let color: Color
+    
+    public init(
+        width: CGFloat = UIScreen.main.scale == 3 ? 1.8 : 2,
+        height: CGFloat? = 30,
+        color: Color
+    ) {
+        self.width = width
+        self.height = height
+        self.color = color
+    }
+    
     public var body: some View {
         Capsule()
-            .foregroundColor(.red)
-            .frame(width: UIScreen.main.scale == 3 ? 1.8 : 2, height: 30)
-    }
-}
-
-struct CursorBody_Previews: PreviewProvider {
-    static var previews: some View {
-        NativeCursorBody()
+            .fill(color)
+            .frame(width: width, height: height)
     }
 }

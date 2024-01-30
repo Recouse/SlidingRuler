@@ -35,6 +35,7 @@ public protocol ScaleView: FractionableView, Equatable {
     var shape: ScaleShape { get }
     var width: CGFloat { get }
     var height: CGFloat { get }
+    var color: Color { get }
 
     var unitMarkWidth: CGFloat { get }
     var halfMarkWidth: CGFloat { get }
@@ -48,6 +49,7 @@ public protocol ScaleView: FractionableView, Equatable {
 extension ScaleView {
     var body: some View {
         shape
+            .fill(color)
             .frame(size: .init(width: width, height: height))
             .fixedSize()
     }

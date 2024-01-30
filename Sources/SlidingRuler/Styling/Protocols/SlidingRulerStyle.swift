@@ -35,18 +35,22 @@ public protocol SlidingRulerStyle {
 
     var fractions: Int { get }
     var cellWidth: CGFloat { get }
+    var cellColor: Color { get }
     var cursorAlignment: VerticalAlignment { get }
+    var cursorColor: Color { get }
     var hasMarks: Bool { get }
     var hasHalf: Bool { get }
     var supportsPointerInteraction: Bool { get }
 
-    func makeCellBody(configuration: SlidingRulerStyleConfiguation) -> CellBody
+    func makeCellBody(configuration: SlidingRulerStyleConfiguration) -> CellBody
     func makeCursorBody() -> CursorBody
 }
 
 public extension SlidingRulerStyle {
     var fractions: Int { CellBody.fractions }
     var cellWidth: CGFloat { 120 }
+    var cellColor: Color { .black }
+    var cursorColor: Color { .red }
     var hasMarks: Bool { true }
     var hasHalf: Bool { CellBody.hasHalf }
     var supportsPointerInteraction: Bool { true }

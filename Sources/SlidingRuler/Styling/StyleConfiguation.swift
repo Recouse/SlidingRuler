@@ -30,7 +30,7 @@
 import Foundation
 import CoreGraphics
 
-public struct SlidingRulerStyleConfiguation {
+public struct SlidingRulerStyleConfiguration {
     let mark: CGFloat
     let bounds: ClosedRange<CGFloat>
     let step: CGFloat

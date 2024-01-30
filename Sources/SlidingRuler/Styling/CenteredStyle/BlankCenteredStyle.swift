@@ -30,16 +30,26 @@
 import SwiftUI
 
 public struct BlankCenteredSlidingRulerStyle: SlidingRulerStyle {
-    public let cursorAlignment: VerticalAlignment = .top
+    public var cellColor: Color
+    public var cursorAlignment: VerticalAlignment = .top
+    public var cursorColor: Color
+    
+    public init(cellColor: Color = .black, cursorColor: Color = .red) {
+        self.cellColor = cellColor
+        self.cursorColor = cursorColor
+    }
 
-    public func makeCellBody(configuration: SlidingRulerStyleConfiguation) -> some FractionableView {
-        BlankCenteredCellBody(mark: configuration.mark,
-                              bounds: configuration.bounds,
-                              step: configuration.step,
-                              cellWidth: cellWidth)
+    public func makeCellBody(configuration: SlidingRulerStyleConfiguration) -> some FractionableView {
+        BlankCenteredCellBody(
+            mark: configuration.mark,
+            bounds: configuration.bounds,
+            step: configuration.step,
+            cellWidth: cellWidth,
+            cellColor: cellColor
+        )
     }
 
     public func makeCursorBody() -> some View {
-        NativeCursorBody()
+        NativeCursorBody(color: cursorColor)
     }
 }

@@ -30,37 +30,27 @@
 import SwiftUI
 
 public struct PrimarySlidingRulerStyle: SlidingRulerStyle {
-    public let cursorAlignment: VerticalAlignment = .top
+    public var cellColor: Color
+    public var cursorAlignment: VerticalAlignment = .bottom
+    public var cursorColor: Color
+    
+    public init(cellColor: Color = .black, cursorColor: Color = .red) {
+        self.cellColor = cellColor
+        self.cursorColor = cursorColor
+    }
 
-    public func makeCellBody(configuration: SlidingRulerStyleConfiguation) -> some FractionableView {
-        DefaultCellBody(mark: configuration.mark,
-                        bounds: configuration.bounds,
-                        step: configuration.step,
-                        cellWidth: cellWidth,
-                        numberFormatter: configuration.formatter)
+    public func makeCellBody(configuration: SlidingRulerStyleConfiguration) -> some FractionableView {
+        DefaultCellBody(
+            mark: configuration.mark,
+            bounds: configuration.bounds,
+            step: configuration.step,
+            cellWidth: cellWidth,
+            cellColor: cellColor,
+            numberFormatter: configuration.formatter
+        )
     }
     
     public func makeCursorBody() -> some View {
-        NativeCursorBody()
-    }
-}
-
-struct DefaultStyle_Previews: PreviewProvider {
-    struct CellTrio: View {
-        let range: ClosedRange<CGFloat>
-        let width: CGFloat
-
-        var body: some View {
-            HStack(spacing: 0) {
-                BlankCellBody(mark: -1, bounds: range, step: 1, cellWidth: width).clipped()
-                BlankCellBody(mark: 0, bounds: range, step: 1, cellWidth: width).clipped()
-                BlankCellBody(mark: 1, bounds: range, step: 1, cellWidth: width).clipped()
-            }
-        }
-    }
-
-    static var previews: some View {
-        CellTrio(range: -0.4...0.9, width: 120)
-            .previewLayout(.sizeThatFits)
+        NativeCursorBody(color: cursorColor)
     }
 }

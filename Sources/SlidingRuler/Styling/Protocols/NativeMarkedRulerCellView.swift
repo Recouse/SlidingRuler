@@ -41,7 +41,7 @@ extension NativeMarkedRulerCellView {
             cell.equatable()
             Spacer()
             Text(verbatim: displayMark)
-                .font(Font.footnote.monospacedDigit())
+                .font(.footnote.monospacedDigit())
                 .foregroundColor(markColor)
                 .lineLimit(1)
         }

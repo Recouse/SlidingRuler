@@ -60,14 +60,16 @@ struct CenteredScaleView: ScaleView {
 
     let width: CGFloat
     let height: CGFloat
+    let color: Color
     var shape: ScaleShape { .init() }
 
     var unitMarkWidth: CGFloat { shape.unitMarkSize.width }
     var halfMarkWidth: CGFloat { shape.halfMarkSize.width }
     var fractionMarkWidth: CGFloat { shape.fractionMarkSize.width }
 
-    init(width: CGFloat, height: CGFloat = 30) {
+    init(width: CGFloat, height: CGFloat = 30, color: Color) {
         self.width = width
         self.height = height
+        self.color = color
     }
 }
