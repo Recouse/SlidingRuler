@@ -42,6 +42,6 @@ public protocol MarkedRulerCellView: FractionableView {
     var cell: CellView { get }
 }
 
-extension MarkedRulerCellView {
+public extension MarkedRulerCellView {
     static var fractions: Int { CellView.fractions }
 }

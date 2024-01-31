@@ -29,8 +29,8 @@
 
 import SwiftUI
 
-protocol NativeMarkedRulerCellView: MarkedRulerCellView { }
-extension NativeMarkedRulerCellView {
+public protocol NativeMarkedRulerCellView: MarkedRulerCellView { }
+public extension NativeMarkedRulerCellView {
     var markColor: Color {
         bounds.contains(mark) ? .init(.label) : .init(.tertiaryLabel)
     }
