@@ -57,10 +57,3 @@ struct Ruler: View, Equatable {
         (lhs.markOffset == rhs.markOffset)
     }
 }
-
-struct Ruler_Previews: PreviewProvider {
-    static var previews: some View {
-        Ruler(cells: [.init(CGFloat(0))],
-              step: 1.0, markOffset: 0, bounds: -1...1, formatter: nil)
-    }
-}
